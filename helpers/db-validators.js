@@ -16,8 +16,17 @@ const validateEmail = async (correo = '') => {
 }
 
 
+const validateUserId = async (id) => {
+  const userIdExists = await User.findById(id);
+  if (!userIdExists) {
+    throw new Error(`El ID ${id} no existe `)
+  }
+}
+
+
 
 module.exports = {
   validateRole,
-  validateEmail
+  validateEmail,
+  validateUserId
 }
